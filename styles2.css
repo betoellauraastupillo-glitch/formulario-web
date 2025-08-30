@@ -1,0 +1,91 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f3f5;
+  margin: 0;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+
+#tipoDocumento {
+  background-color: #f2c1a0; /* Fondo */
+  color: #333;               /* Color del texto */
+  border: 2px solid #201503; /* Borde azul */
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+#tipoDocumento:hover {
+  background-color: #fab471; /* Color al pasar el mouse */
+  border-color: #000000;     /* Cambia también el borde si deseas */
+}
+.container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.boton1 {
+  background-color: #f2c1a0;
+  color: #000000;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.boton1:hover {
+  background-color: #ea8c00;
+}
+
+.resumen {
+  background-color: #f4f4f4;
+  padding: 15px;
+  margin-top: 15px;
+  white-space: pre-wrap;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+
+h1{
+  color: #f1691f;
+  text-align: center;
+}
+textarea {
+  width: 100%;          /* Ocupa todo el ancho disponible */
+  min-height: 120px;    /* Altura mínima */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;  /* Incluye padding en el ancho total */
+  resize: vertical;        /* Solo deja agrandar hacia abajo */
+}
+
+/* Opcional: Ajustes en pantallas más grandes */
+@media (min-width: 768px) {
+  textarea {
+    max-width: 600px;   /* En pantallas grandes no pasará de 600px */
+  }
+}
