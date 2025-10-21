@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   background: url('beto.gif') no-repeat center center fixed;
-  background-color: #eef2f3;
+  /*background-color: #eef2f3; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,6 +89,7 @@ option {
 select:hover {
   background-color: #333;
 }
+
 
 
 
