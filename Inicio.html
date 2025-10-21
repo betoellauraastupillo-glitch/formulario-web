@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reporte de trabajo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Seleccione el tipo de reporte </h1>
+    
+    <label for="opciones">Tipos de Reporte:</label>
+    <select id="opciones">
+      <option value="">Selecciona tipo de reporte</option>
+       <option value="ifibra.html">Instalación Fibra</option>
+        <option value="iantena.html">Instalación Antena</option>
+        <option value="tfibra.html">Traslado Fibra</option>
+        <option value="tantena.html">Traslado Antena</option>
+        <option value="trasladom.html">Traslado Migración</option>
+        <option value="trasladoe.html">Traslado Emigración</option>
+        <option value="migracion.html">Migración</option>
+        <option value="emigracion.html">Emigración</option>
+        <option value="soportef.html">Soporte Fibra</option>
+        <option value="soportea.html">Soporte Antena</option>
+        <option value="retirof.html">Retiro Fibra</option>
+        <option value="retiroa.html">Retiro Antena</option>
+        <option value="otro.html">Reporte adicional</option>
+        <option value="reportef.html">Reporte Final</option>
+    </select>
+  </div>
+
+<script>
+  const select = document.getElementById("opciones");
+
+  select.addEventListener("change", function() {
+    const destino = this.value;
+    if (destino) {
+      window.location.href = destino;
+      this.value = ""; // vuelve al inicio
+    }
+  });
+</script>
+
+</body>
+</html>
+
