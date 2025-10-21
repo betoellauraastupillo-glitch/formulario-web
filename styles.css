@@ -87,3 +87,5 @@ option {
 select:hover {
   background-color: #333;
 }
+background: url('fondo.gif') no-repeat center center fixed;
+
