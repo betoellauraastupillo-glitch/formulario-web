@@ -4,19 +4,30 @@
 
 body {
   font-family: Arial, sans-serif;
-
-  /* Fondo animado con el GIF */
   background: url('beto.gif') no-repeat center center fixed;
-  background-size: cover; /* Hace que el gif cubra toda la pantalla */
-
-  /* Centra el contenido */
+  background-size: cover;   /* 🔹 Se adapta a pantallas grandes */
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  height: 100vh; /* Ocupa toda la altura de la pantalla */
-  margin: 0; /* Elimina márgenes por defecto */
+  height: 100vh;
+  margin: 0;
 }
+
+/* 📱 En pantallas pequeñas (celulares o tablets) */
+@media (max-width: 768px) {
+  body {
+    background-size: contain;  /* 🔹 Mantiene proporción sin recortar */
+    background-position: center;
+    background-attachment: scroll; /* evita saltos al hacer scroll */
+  }
+
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
 
 /* ===============================
    Contenedor principal del menú
@@ -90,3 +101,4 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
