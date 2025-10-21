@@ -8,6 +8,7 @@ body {
   background-size: cover;   /* 🔹 Se adapta a pantallas grandes */
   background-attachment: fixed;
   display: flex;
+  transition: background-size 0.5s ease-in-out;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -101,4 +102,5 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
 
