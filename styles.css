@@ -4,106 +4,28 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: url('beto3.gif') no-repeat center center fixed;
-  background-size: cover;   /* 🔹 Se adapta a pantallas grandes */
+  background: url('beto3.gif') no-repeat center center;
+  background-size: cover; /* 🔹 Se adapta a pantallas grandes */
   background-attachment: fixed;
   display: flex;
-  transition: background-size 0.5s ease-in-out;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  transition: background-size 0.5s ease-in-out;
 }
 
 /* 📱 En pantallas pequeñas (celulares o tablets) */
 @media (max-width: 768px) {
   body {
-    background-size: contain;  /* 🔹 Mantiene proporción sin recortar */
-    background-position: center;
-    background-attachment: scroll; /* evita saltos al hacer scroll */
+    background: url('beto3.gif') no-repeat center center;
+    background-size: cover; /* 🔹 Mantiene el GIF grande y cubre todo */
+    background-attachment: scroll; /* 🔹 Soluciona el bug en móviles */
   }
 
   .container {
-    width: 90%;
-    padding: 15px;
+    width: 95%;
+    max-width: 400px;
+    padding: 20px;
   }
 }
-
-
-/* ===============================
-   Contenedor principal del menú
-   =============================== */
-.container {
-  background-color: rgb(252, 227, 198); /* Fondo claro del cuadro */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(146, 31, 31, 0.3); /* Sombra suave */
-  width: 300px;
-  text-align: center;
-}
-
-/* ===============================
-   Estilo del título principal
-   =============================== */
-h1 {
-  color: rgb(0, 0, 0);
-  -webkit-text-stroke: 1px rgb(255, 149, 57); /* Contorno del texto */
-  font-size: 20px;
-}
-
-/* ===============================
-   Etiquetas y campos de entrada
-   =============================== */
-label {
-  display: block;
-  margin: 10px 0 5px;
-}
-
-/* ===============================
-   Select de opciones
-   =============================== */
-select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 15px;
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: #222; /* Fondo oscuro del select */
-  color: white;
-  border: 1px solid #444;
-  cursor: pointer;
-}
-
-/* Cambia color del select al pasar el mouse */
-select:hover {
-  background-color: #333;
-}
-
-/* Estilo de las opciones internas */
-option {
-  background-color: white;
-  color: black;
-}
-
-/* ===============================
-   Botones genéricos (si se agregan)
-   =============================== */
-button {
-  width: 100%;
-  background-color: #ff8c08;
-  color: white;
-  padding: 10px;
-  border: none;
-  margin-top: 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-
-
-
-
