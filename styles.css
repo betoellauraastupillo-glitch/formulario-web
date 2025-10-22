@@ -4,7 +4,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: url('beto3.gif') no-repeat center center;
+  background: url('beto.gif') no-repeat center center;
   background-size: cover; /* 🔹 Se adapta a pantallas grandes */
   background-attachment: fixed;
   display: flex;
@@ -109,5 +109,6 @@ option {
 select:hover {
   background-color: #333;
 }
+
 
 
