@@ -23,11 +23,13 @@ body {
     background-attachment: scroll; /* 🔹 Soluciona el bug en móviles */
   }
 
-  .container {
-    width: 95%;
-    max-width: 400px;
-    padding: 20px;
-  }
+.container {
+background-color: rgba(0, 0, 0, 0.5); /* negro con 50% de transparencia */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(146, 31, 31, 0.1);
+  width: 300px;
+}
 }
 
 .container {
@@ -109,6 +111,7 @@ option {
 select:hover {
   background-color: #333;
 }
+
 
 
 
