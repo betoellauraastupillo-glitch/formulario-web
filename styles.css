@@ -5,8 +5,8 @@
 body {
   font-family: Arial, sans-serif;
   background: url('beto3.gif') no-repeat center center;
-  background-size: cover; /* 🔹 Se adapta a pantallas grandes */
-  background-attachment: fixed;
+  background-size: cover;              /* 🔹 Se adapta a pantallas grandes */
+  background-attachment: fixed;        /* 🔹 Mantiene el fondo fijo en PC */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,40 +19,36 @@ body {
 @media (max-width: 768px) {
   body {
     background: url('beto3.gif') no-repeat center center;
-    background-size: cover; /* 🔹 Mantiene el GIF grande y cubre todo */
-    background-attachment: scroll; /* 🔹 Soluciona el bug en móviles */
+    background-size: cover;            /* 🔹 Mantiene el GIF grande */
+    background-attachment: scroll;     /* 🔹 Soluciona el bug en móviles */
   }
-
-.container {
-background-color: rgba(0, 0, 0, 0.5); /* negro con 50% de transparencia */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(146, 31, 31, 0.1);
-  width: 300px;
-}
 }
 
+/* 🎨 Contenedor principal */
 .container {
-  background-color: rgb(252, 227, 198);
+  background-color: rgba(0, 0, 0, 0.6); /* 🔹 Negro con 60% de transparencia */
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(146, 31, 31, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
   width: 300px;
+  color: white;                         /* 🔹 Texto blanco para mejor contraste */
 }
+
+/* 🏷️ Título principal */
 h1 {
   font-family: Arial, sans-serif;
-  align-items: center;
-  color: rgb(0, 0, 0);
-  -webkit-text-stroke: 1px rgb(255, 149, 57); /* grosor y color del borde */
+  text-align: center;
+  color: #fff;
+  -webkit-text-stroke: 1px rgb(255, 149, 57); /* Borde anaranjado */
 }
 
-
-
+/* 📝 Etiquetas */
 label {
   display: block;
   margin: 10px 0 5px;
 }
 
+/* 🔤 Campos de texto */
 input {
   width: 100%;
   padding: 8px;
@@ -60,6 +56,7 @@ input {
   border-radius: 5px;
 }
 
+/* 🔘 Botón */
 button {
   width: 100%;
   background-color: #ff8c08;
@@ -69,50 +66,40 @@ button {
   margin-top: 15px;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #e67700;
 }
 
+/* 📊 Resultado */
 #resultado {
   margin-top: 20px;
   text-align: center;
   font-weight: bold;
 }
 
+/* 🔽 Selectores */
 select {
   width: 100%;
   padding: 10px;
   margin-top: 20px;
   border-radius: 5px;
   font-size: 16px;
-  color: rgb(0, 0, 0);
-}
-/* Estilo para el <select> */
-select {
-  background-color: #222;   /* Fondo del selector */
-  color: white;             /* Color del texto */
-  border: 1px solid #444;   /* Borde */
-  padding: 5px;
-  border-radius: 5px;       /* Bordes redondeados */
-  font-size: 16px;
+  color: white;
+  background-color: #222;
+  border: 1px solid #444;
   cursor: pointer;
 }
 
-/* Estilo para las opciones */
+/* Opciones del select */
 option {
-  background-color: rgb(255, 255, 255); /* Fondo de las opciones */
-  color: rgb(0, 0, 0);            /* Texto */
- 
+  background-color: white;
+  color: black;
 }
 
-/* Cambiar color al pasar el mouse sobre el select */
+/* Hover del select */
 select:hover {
   background-color: #333;
 }
-
-
-
-
-
