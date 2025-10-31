@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reporte final</title>
+  <link rel="stylesheet" href="styles2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="formulario-seccion">
+      <h1><i class="fa-solid fa-circle-nodes"></i> Reporte final</h1>
+
+      <form id="formulario">
+        <!-- FECHA -->
+        <label for="fecha"><i class="fa-regular fa-calendar"></i> Fecha:</label>
+        <input type="date" id="fecha" required>
+
+        <!-- REPORTES -->
+        <label><i class="fa-solid fa-file-lines"></i> Reporte:</label>
+        <div id="reportes-container"></div>
+        <button type="button" id="agregar-reporte" class="boton1">
+          <i class="fa-solid fa-plus"></i> Agregar reporte
+        </button>
+
+        <!-- GASTOS -->
+        <label for="monto">Gastos generados (S/):</label>
+        <input type="number" id="monto" name="monto" placeholder="Ejemplo: 150.00" step="0.01" min="0">
+
+        <label for="explicacion">Detalles:</label>
+        <input type="text" id="explicacion" name="explicacion" placeholder="Especificar el método de pago">
+
+        <!-- RECAUDADO -->
+        <label for="monto2">Total recaudado (S/):</label>
+        <input type="number" id="monto2" name="monto2" placeholder="Ejemplo: 150.00" step="0.01" min="0">
+
+        <label for="explicacion2">Detalles:</label>
+        <input type="text" id="explicacion2" name="explicacion2" placeholder="Especificar el método de pago">
+
+        <!-- HORAS -->
+        <label for="horaIngreso">Hora de ingreso:</label>
+        <input type="time" id="horaIngreso" name="horaIngreso">
+
+        <label for="horaSalida">Hora de salida:</label>
+        <input type="time" id="horaSalida" name="horaSalida">
+
+        <!-- BOTONES -->
+        <button type="submit" class="boton1">
+          <i class="fa-solid fa-spinner"></i> Generar resumen
+        </button>
+        <button onclick="history.back()" class="boton1" type="button">
+          <i class="fa-solid fa-arrow-rotate-left"></i> Volver al inicio
+        </button>
+      </form>
+    </div>
+
+    <!-- SECCIÓN RESUMEN -->
+    <div id="resumen-seccion" style="display: none;">
+      <h2>Resumen generado</h2>
+      <div id="resumen-texto" class="resumen"></div>
+
+      <button id="copiarBtn" class="boton1">
+        <i class="fa-solid fa-copy"></i> Copiar
+      </button>
+      <button id="inicioBtn" class="boton1">
+        <i class="fa-solid fa-arrow-rotate-left"></i> Volver al inicio
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Hace que todos los campos sean obligatorios (menos botones)
+    document.addEventListener("DOMContentLoaded", function() {
+      const formulario = document.getElementById("formulario");
+      const campos = formulario.querySelectorAll("input, select, textarea");
+
+      campos.forEach(function(campo) {
+        if (
+          campo.type !== "button" &&
+          campo.type !== "submit" &&
+          campo.type !== "reset" &&
+          campo.type !== "hidden" &&
+          !campo.disabled
+        ) {
+          campo.required = true;
+        }
+      });
+    });
+  </script>
+
+  <script src="scriptfinal.js"></script>
+</body>
+</html>

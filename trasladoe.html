@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Traslado Emigración</title>
+  <link rel="stylesheet" href="styles2.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+
+
+<body>
+  <div class="container">
+    <div id="formulario-seccion">
+      <h1><i class="fa-solid fa-circle-nodes"></i> Traslado Emigración</h1>
+      <form id="formulario">
+        <label for="fecha"><i class="fa-regular fa-calendar"></i> Fecha:</label>
+        <input type="date" id="fecha" required>
+
+        <label for="acompanante"><i class="fa-solid fa-users"></i> Se fue al traslado emigración con:</label>
+        <input type="text" id="acompanante">
+
+        <label for="cliente"><i class="fa-solid fa-user"></i>Del cliente:</label>
+        <input type="text" id="cliente">
+        
+<!--DOCUMENTO-CELULAR CORREO--> 
+
+        <label for="distrito"><i class="fa-solid fa-location-dot"></i> Distrito:</label>
+        <input type="text" id="distrito">
+
+        <label for="direccion"><i class="fa-solid fa-map-location-dot"></i> Dirección:</label>
+        <input type="text" id="direccion" required placeholder="Urb. Av. C. Psje.">
+
+        <label for="manzana"><i class="fa-solid fa-location-pin"></i> Manzana:</label>
+        <input type="text" id="manzana">
+
+        <label for="lote"><i class="fa-solid fa-location-pin"></i> Lote:</label>
+        <input type="text" id="lote">
+
+        <label for="pisos"><i class="fa-solid fa-house"></i> Piso de la casa:</label>
+        <input type="text" id="pisos" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        
+        <label for="instaladoEn"><i class="fa-solid fa-house-flag"></i> Instalado en el piso:</label>
+        <input type="text" id="instaladoEn" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+        <label for="inquilino"><i class="fa-solid fa-house-user"></i> Propietario/Inquilino:</label>
+        <div id="inquilino-container" style="margin-bottom: 10px;">
+          <label style="display: block;">
+            <input type="radio" name="inquilino" value="Propietario" required> Propietario
+          </label>
+          <label style="display: block;">
+            <input type="radio" name="inquilino" value="Inquilino" required> Inquilino
+          </label>
+        </div>
+
+        <label><i class="fa-solid fa-toolbox"></i> Equipos instalados:</label>
+        <div id="equipos-container"></div>
+        <button type="button" id="agregar-equipo" class="boton1"><i class="fa-solid fa-plus"></i> Agregar equipo</button>
+
+<!-- EQUIPOS RETIRADOS -->
+<label><i class="fa-solid fa-box"></i> Equipos retirados:</label>
+<div id="equipos-retirados-container"></div>
+<button type="button" id="agregar-equipo-retirado" class="boton1">
+  <i class="fa-solid fa-minus"></i> Agregar equipo retirado
+</button>
+
+
+        <label for="plan"><i class="fa-solid fa-wifi"></i> Plan:</label>
+        <input type="text" id="plan">
+
+        <label for="ip">IP:</label>
+        <input type="text" id="ip">
+        
+        <label for="torre"><i class="fa-solid fa-tower-cell"></i> Torre:</label>
+        <input type="text" id="torre">
+
+        <label for="supresor"><i class="fa-solid fa-plug"></i> Supresor:</label>
+        <input type="text" id="supresor">
+<!--pago y metodo de pago contrato--> 
+        <label for="iptv"><i class="fa-solid fa-tv"></i> IPTV:</label>
+        <input type="text" id="iptv">
+
+        <label for="sistema">Se trabajo en sistemas con:</label>
+        <input type="text" id="sistema">
+
+        <label for="confirmado"><i class="fa-solid fa-thumbs-up"></i> Fue confirmado por:</label>
+        <input type="text" id="confirmado">
+        
+        <label for="nota"><i class="fa-solid fa-clipboard"></i> NOTA:</label>
+        <input type="text" id="nota">
+
+        <button type="submit" class="boton1"><i class="fa-solid fa-spinner"></i> Generar resumen</button>
+   <button onclick="history.back()" class="boton1"><i class="fa-solid fa-arrow-rotate-left"></i> Volver al inicio</button>
+
+      </form>
+    </div>
+
+    <div id="resumen-seccion" style="display: none;">
+      <h2>Resumen generado</h2>
+      <div id="resumen-texto" class="resumen"></div>
+      <button id="copiarBtn" class="boton1" ><i class="fa-solid fa-copy"></i> Copiar</button>
+      <button id="inicioBtn" class="boton1"><i class="fa-solid fa-arrow-rotate-left"></i>Volver al inicio</button>
+    </div>
+  </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const formulario = document.getElementById("formulario");
+    const campos = formulario.querySelectorAll("input, select, textarea");
+
+    campos.forEach(function(campo) {
+      if (
+        campo.type !== "button" &&
+        campo.type !== "submit" &&
+        campo.type !== "reset" &&
+        campo.type !== "hidden" &&
+        !campo.disabled
+      ) {
+        campo.required = true;
+      }
+    });
+  });
+</script>
+<script>
+  const pisosInput = document.getElementById("pisos");
+  const instaladoEnInput = document.getElementById("instaladoEn");
+
+  instaladoEnInput.addEventListener("input", () => {
+    const pisos = parseInt(pisosInput.value);
+    const instalado = parseInt(instaladoEnInput.value);
+
+    // Si no es número válido o es mayor al valor de pisos, borra o corrige
+    if (!isNaN(pisos) && instalado > pisos) {
+      alert("El piso de instalación no puede ser mayor que el total de pisos.");
+      instaladoEnInput.value = "";
+    }
+  });
+</script>
+
+
+
+  <script src="scripttemigracion.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reporte de trabajo</title>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fa-solid fa-file-pen"></i> Seleccione el tipo de reporte</h1>
+    
+    <label for="opciones">Tipos de Reporte:</label>
+    <select id="opciones" required>
+      <option value="">Selecciona tipo de reporte</option>
+      <option value="ifibra.html">Instalación Fibra</option>
+      <option value="iantena.html">Instalación Antena</option>
+      <option value="tfibra.html">Traslado Fibra</option>
+      <option value="tantena.html">Traslado Antena</option>
+      <option value="trasladom.html">Traslado Migración</option>
+      <option value="trasladoe.html">Traslado Emigración</option>
+      <option value="migracion.html">Migración</option>
+      <option value="emigracion.html">Emigración</option>
+      <option value="soportef.html">Soporte Fibra</option>
+      <option value="soportea.html">Soporte Antena</option>
+      <option value="retirof.html">Retiro Fibra</option>
+      <option value="retiroa.html">Retiro Antena</option>
+      <option value="otro.html">Reporte adicional</option>
+      <option value="reportef.html">Reporte Final</option>
+    </select>
+  </div>
+
+<script>
+  const select = document.getElementById("opciones");
+
+  // 💡 Forzar reinicio al cargar (incluso si viene del historial)
+  window.addEventListener("pageshow", function() {
+    select.selectedIndex = 0; // fuerza volver al primer option
+    select.style.background = ""; // quita el color anterior
+  });
+
+  select.addEventListener("change", function() {
+    const valor = this.value;
+
+    // 🎨 Cambia color del fondo según el tipo de reporte
+    if (valor.includes("fibra")) {
+      this.style.background = "linear-gradient(135deg, #ff5a5a, #ff9a9a)";
+    } else if (valor.includes("antena")) {
+      this.style.background = "linear-gradient(135deg, #0078ff, #00c6ff)";
+    } else if (valor.includes("traslado")) {
+      this.style.background = "linear-gradient(135deg, #ffc107, #ff9800)";
+    } else if (valor.includes("soporte")) {
+      this.style.background = "linear-gradient(135deg, #2ecc71, #27ae60)";
+    } else if (valor.includes("retiro")) {
+      this.style.background = "linear-gradient(135deg, #9b59b6, #8e44ad)";
+    } else {
+      this.style.background = "linear-gradient(135deg, #555, #777)";
+    }
+
+    // 🚀 Redirige a la página seleccionada
+    if (valor && valor.endsWith(".html")) {
+      setTimeout(() => window.location.href = valor, 400);
+    }
+  });
+</script>
+
+</body>
+</html>

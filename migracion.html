@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Migracion</title>
+  <link rel="stylesheet" href="styles2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="formulario-seccion">
+      <h1><i class="fa-solid fa-tower-cell"></i> Migración <i class="fa-solid fa-circle-nodes"></i></h1>
+      
+      <form id="formulario">
+        <label for="fecha"><i class="fa-regular fa-calendar"></i> Fecha:</label>
+        <input type="date" id="fecha" required>
+
+        <label for="acompanante"><i class="fa-solid fa-users"></i> Se fue a la migración con:</label>
+        <input type="text" id="acompanante">
+
+        <label for="cliente"><i class="fa-solid fa-user"></i> Del cliente:</label>
+        <input type="text" id="cliente">
+
+        <!-- EQUIPOS INSTALADOS -->
+        <label><i class="fa-solid fa-toolbox"></i> Equipos instalados:</label>
+        <div id="equipos-container"></div>
+        <button type="button" id="agregar-equipo" class="boton1">
+          <i class="fa-solid fa-plus"></i> Agregar equipo
+        </button>
+
+        <!-- EQUIPOS RETIRADOS -->
+        <label><i class="fa-solid fa-box"></i> Equipos retirados:</label>
+        <div id="equipos-retirados-container"></div>
+        <button type="button" id="agregar-equipo-retirado" class="boton1">
+          <i class="fa-solid fa-minus"></i> Agregar equipo retirado
+        </button>
+
+        <label for="plan"><i class="fa-solid fa-wifi"></i> Plan:</label>
+        <input type="text" id="plan">
+
+        <label for="ip">IP:</label>
+        <input type="text" id="ip">
+
+        <label for="caja"><i class="fa-solid fa-boxes-stacked"></i> Caja:</label>
+        <input type="text" id="caja">
+
+        <label for="puerto"><i class="fa-solid fa-wave-square"></i> Puerto:</label>
+        <input type="text" id="puerto">
+
+        <label for="supresor"><i class="fa-solid fa-plug"></i> Supresor:</label>
+        <input type="text" id="supresor">
+
+        <label for="iptv"><i class="fa-solid fa-tv"></i> IPTV:</label>
+        <input type="text" id="iptv">
+
+        <label for="sistema">Se trabajó en sistema con:</label>
+        <input type="text" id="sistema">
+
+        <label for="confirmado"><i class="fa-solid fa-thumbs-up"></i> Fue confirmado por:</label>
+        <input type="text" id="confirmado">
+
+        <label for="nota"><i class="fa-solid fa-clipboard"></i> Nota:</label>
+        <input type="text" id="nota">
+
+        <button type="submit" class="boton1">
+          <i class="fa-solid fa-spinner"></i> Generar resumen
+        </button>
+        <button onclick="history.back()" type="button" class="boton1">
+          <i class="fa-solid fa-arrow-rotate-left"></i> Volver al inicio
+        </button>
+      </form>
+    </div>
+
+    <div id="resumen-seccion" style="display: none;">
+      <h2>Resumen generado</h2>
+      <div id="resumen-texto" class="resumen"></div>
+      <button id="copiarBtn" class="boton1">
+        <i class="fa-solid fa-copy"></i> Copiar
+      </button>
+      <button id="inicioBtn" class="boton1">
+        <i class="fa-solid fa-arrow-rotate-left"></i> Volver al inicio
+      </button>
+    </div>
+  </div>
+
+  <script src="scriptmigracion.js"></script>
+</body>
+</html>

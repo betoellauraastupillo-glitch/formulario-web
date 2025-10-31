@@ -1,0 +1,200 @@
+/* ===============================
+   Fondo y cuerpo
+================================= */
+body {
+  font-family: Arial, sans-serif;
+  background: url('beto3.gif') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 40px;
+  transition: background-size 0.5s ease-in-out;
+}
+
+/* 📱 Adaptación para móviles */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+/* ===============================
+   Contenedor principal
+================================= */
+.container {
+  background-color: rgba(0, 0, 0, 0.6); /* Negro transparente */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* ===============================
+   Títulos
+================================= */
+h1, h2 {
+  text-align: center;
+  color: #fffdfd;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgb(0, 0, 0), 0 0 20px rgb(255, 29, 29);
+}
+
+/* ===============================
+   Formularios
+================================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Etiquetas */
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #fff;
+}
+
+/* Campos de texto, select y textarea */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+/* Área de texto */
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: Arial, sans-serif;
+}
+
+/* ===============================
+   Botones modernos
+================================= */
+.boton1 {
+  background: linear-gradient(135deg, #f2a0a0, #f75c5c);
+  color: #000000;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: block;
+  margin: 15px auto;
+  width: 80%;
+  max-width: 350px;
+  text-align: center;
+}
+
+.boton1:hover {
+  background: linear-gradient(135deg, #f75c5c, #ea0000);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(234, 140, 0, 0.5);
+}
+
+.boton1:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 8px rgba(234, 140, 0, 0.4);
+}
+
+/* Centrado de botones */
+form .boton1,
+#resumen-seccion .boton1 {
+  display: block;
+  margin: 10px auto;
+  width: 80%;
+}
+
+/* ===============================
+   Sección resumen
+================================= */
+.resumen {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  color: #fff;
+  white-space: pre-wrap;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  line-height: 1.5;
+  backdrop-filter: blur(4px);
+}
+
+/* ===============================
+   💠 Estilo uniforme global para grupos de radios
+   (Retiro de conector / Inquilino-Propietario / Equipo Nuevo-Usado)
+================================= */
+
+/* Detecta automáticamente grupos de radio relacionados */
+div[id*="conector"],
+div[id*="inquilino"],
+div[id*="equipo"],
+div[class*="radio"] {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 5px;
+  flex-wrap: wrap; /* adaptable a móviles */
+}
+
+/* Etiquetas de opciones (Sí/No, Inquilino/Propietario, Nuevo/Usado) */
+div[id*="conector"] label,
+div[id*="inquilino"] label,
+div[id*="equipo"] label,
+div[class*="radio"] label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 110, 110, 0.298);
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+/* Hover */
+div[id*="conector"] label:hover,
+div[id*="inquilino"] label:hover,
+div[id*="equipo"] label:hover,
+div[class*="radio"] label:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Radio buttons */
+div[id*="conector"] input[type="radio"],
+div[id*="inquilino"] input[type="radio"],
+div[id*="equipo"] input[type="radio"],
+div[class*="radio"] input[type="radio"] {
+  accent-color: #f75c5c;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* Texto del radio seleccionado */
+div[id*="conector"] input[type="radio"]:checked + span,
+div[id*="inquilino"] input[type="radio"]:checked + span,
+div[id*="equipo"] input[type="radio"]:checked + span,
+div[class*="radio"] input[type="radio"]:checked + span {
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+.eliminar-reporte {
+  color: black !important;
+}

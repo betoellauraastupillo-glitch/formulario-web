@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soporte de antena</title>
+  <link rel="stylesheet" href="styles2.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+
+
+<body>
+  <div class="container">
+    <div id="formulario-seccion">
+      <h1><i class="fa-solid fa-tower-cell"></i> Soporte de antena</h1>
+      <form id="formulario">
+        <label for="fecha"><i class="fa-regular fa-calendar"></i> Fecha:</label>
+        <input type="date" id="fecha" required>
+
+        <label for="acompanante"><i class="fa-solid fa-users"></i> Se fue al soporte de antena con:</label>
+        <input type="text" id="acompanante">
+
+        <label for="cliente"><i class="fa-solid fa-user"></i>Del cliente:</label>
+        <input type="text" id="cliente">
+
+        <label for="trabajor"><i class="fa-solid fa-clipboard"></i> Trabajo realizado:</label><br>
+        <textarea id="trabajor" name="trabajor" rows="6" cols="50" placeholder="Escriba el trabajo realizado..."></textarea>
+
+        <label><i class="fa-solid fa-toolbox"></i> Equipos instalados:</label>
+        <div id="equipos-container"></div>
+        <button type="button" id="agregar-equipo" class="boton1"><i class="fa-solid fa-plus"></i> Agregar equipo</button>
+
+<!-- EQUIPOS RETIRADOS -->
+<label><i class="fa-solid fa-box"></i> Equipos retirados:</label>
+<div id="equipos-retirados-container"></div>
+<button type="button" id="agregar-equipo-retirado" class="boton1">
+  <i class="fa-solid fa-minus"></i> Agregar equipo retirado
+</button>
+
+        
+<!--plan ip caja puerto supresor iptv  --> 
+
+
+
+        <label for="sistema">Se trabajo en sistemas con:</label>
+        <input type="text" id="sistema">
+
+        <label for="confirmado"><i class="fa-solid fa-thumbs-up"></i> Fue confirmado por:</label>
+        <input type="text" id="confirmado">
+        
+        <label for="nota"><i class="fa-solid fa-clipboard"></i> NOTA:</label>
+        <input type="text" id="nota">
+
+        <button type="submit" class="boton1"><i class="fa-solid fa-spinner"></i> Generar resumen</button>
+   <button onclick="history.back()" class="boton1"><i class="fa-solid fa-arrow-rotate-left"></i> Volver al inicio</button>
+
+      </form>
+    </div>
+
+    <div id="resumen-seccion" style="display: none;">
+      <h2>Resumen generado</h2>
+      <div id="resumen-texto" class="resumen"></div>
+      <button id="copiarBtn" class="boton1" ><i class="fa-solid fa-copy"></i> Copiar</button>
+      <button id="inicioBtn" class="boton1"><i class="fa-solid fa-arrow-rotate-left"></i>Volver al inicio</button>
+    </div>
+  </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const formulario = document.getElementById("formulario");
+    const campos = formulario.querySelectorAll("input, select, textarea");
+
+    campos.forEach(function(campo) {
+      if (
+        campo.type !== "button" &&
+        campo.type !== "submit" &&
+        campo.type !== "reset" &&
+        campo.type !== "hidden" &&
+        !campo.disabled
+      ) {
+        campo.required = true;
+      }
+    });
+  });
+</script>
+<script>
+  const pisosInput = document.getElementById("pisos");
+  const instaladoEnInput = document.getElementById("instaladoEn");
+
+  instaladoEnInput.addEventListener("input", () => {
+    const pisos = parseInt(pisosInput.value);
+    const instalado = parseInt(instaladoEnInput.value);
+
+    // Si no es número válido o es mayor al valor de pisos, borra o corrige
+    if (!isNaN(pisos) && instalado > pisos) {
+      alert("El piso de instalación no puede ser mayor que el total de pisos.");
+      instaladoEnInput.value = "";
+    }
+  });
+</script>
+
+
+
+  <script src="scriptsa.js"></script>
+</body>
+</html>

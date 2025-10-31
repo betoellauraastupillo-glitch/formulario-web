@@ -1,0 +1,133 @@
+/* ===============================
+   🌐 Fondo general y cuerpo
+================================= */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: url('beto3.gif') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* 📱 Ajuste para móviles */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+}
+
+/* ===============================
+   🎯 Contenedor principal
+================================= */
+.container {
+  background: rgba(0, 0, 0, 0.7);          /* Fondo translúcido oscuro */
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  backdrop-filter: blur(6px);
+  animation: aparecer 0.8s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   🏷️ Título principal
+================================= */
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
+  letter-spacing: 1px;
+}
+
+/* ===============================
+   🧭 Selector de opciones
+================================= */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  color: #000;
+  background: linear-gradient(135deg, #ff5a5a, #ff9a9a);
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255, 90, 90, 0.3);
+  appearance: none;         /* 🔹 Quita estilo nativo (Chrome, Edge, Firefox, etc.) */
+  -webkit-appearance: none; /* 🔹 Safari y navegadores WebKit */
+  -moz-appearance: none;
+  outline: none;            /* 🔹 Evita el borde azul al hacer clic */
+}
+
+/* Mantiene mismo color al hacer clic o al estar activo */
+select:focus,
+select:active {
+  background: linear-gradient(135deg, #ff5a5a, #ff9a9a) !important;
+  color: #000 !important;
+}
+
+/* Opciones internas */
+option {
+  background-color: #fff;
+  color: #000;
+}
+
+
+/* Opciones internas del menú */
+option {
+  background-color: #fff;
+  color: #000;
+}
+
+/* ===============================
+   ✨ Efecto decorativo sutil
+================================= */
+.container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 15, 15, 0.394), transparent 70%);
+  animation: girar 6s linear infinite;
+  z-index: -1;
+}
+
+@keyframes girar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
