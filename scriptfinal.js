@@ -66,7 +66,7 @@ document.getElementById("formulario").addEventListener("submit", function (event
         reportes.forEach((textarea) => {
           const texto = textarea.value.trim();
           if (texto) {
-            resumen += `  ⮞ ${texto
+            resumen += `  ✓︎ ${texto
               .split("\n")
               .map((linea) => linea.trim())
               .join("\n  ")}\n`;
@@ -175,3 +175,4 @@ document.getElementById("copiarBtn").addEventListener("click", () => {
 document.getElementById("inicioBtn").addEventListener("click", () => {
   location.reload();
 });
+
