@@ -54,8 +54,17 @@
 
 
 
-        <label for="celular"><i class="fa-solid fa-phone"></i> Celular:</label>
-        <input type="tel" id="celular">
+        <label><i class="fa-solid fa-phone"></i> Celular:</label>
+
+        <div id="celulares-container">
+          <div class="celular-item">
+            <input type="tel" class="celular-numero" placeholder="Número de celular" required>
+          </div>
+        </div>
+
+        <button type="button" id="agregar-celular" class="boton1">
+          <i class="fa-solid fa-plus"></i> Agregar otro celular
+        </button>
 
         <label for="correo"><i class="fa-solid fa-envelope"></i> Correo:</label>
         <input type="text" id="correo">
@@ -63,8 +72,11 @@
         <label for="distrito"><i class="fa-solid fa-location-dot"></i> Distrito:</label>
         <input type="text" id="distrito">
 
-        <label for="direccion"><i class="fa-solid fa-map-location-dot"></i> Dirección:</label>
-        <input type="text" id="direccion" required placeholder="Urb. Av. C. Psje.">
+        <label for="direccion"><i class="fa-solid fa-map-location-dot"></i> Urb/Asoc/Res/Coop/Aa.Hh./Pj/Mcdo:</label>
+        <input type="text" id="direccion" required>
+
+        <label for="calle"><i class="fa-solid fa-road"></i> Ca/Av/Jr/Prol/Psje:</label>
+        <input type="text" id="calle">
 
         <label for="manzana"><i class="fa-solid fa-location-pin"></i> Manzana:</label>
         <input type="text" id="manzana">
@@ -72,6 +84,12 @@
         <label for="lote"><i class="fa-solid fa-location-pin"></i> Lote:</label>
         <input type="text" id="lote">
 
+        <label for="numeroCasa"><i class="fa-solid fa-house-chimney"></i> Número de casa:</label>
+        <input type="text" id="numeroCasa" list="listaNumeros" placeholder="Ingrese número o seleccione">
+
+        <datalist id="listaNumeros">
+          <option value="S/N"></option>
+        </datalist>
         <label for="pisos"><i class="fa-solid fa-house"></i> Piso de la casa:</label>
         <input type="text" id="pisos" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
         
@@ -121,6 +139,12 @@
 
         <label for="iptv"><i class="fa-solid fa-tv"></i> IPTV:</label>
         <input type="text" id="iptv">
+        <label><i class="fa-solid fa-plus"></i> Campos adicionales:</label>
+        <div id="extras-container"></div>
+
+        <button type="button" id="agregar-extra" class="boton1">
+          <i class="fa-solid fa-plus"></i> Agregar campo
+        </button>
 
         <label for="sistema">Se trabajo en sistemas con:</label>
         <input type="text" id="sistema">
@@ -130,6 +154,8 @@
         
         <label for="nota"><i class="fa-solid fa-clipboard"></i> NOTA:</label>
         <input type="text" id="nota">
+
+
 
         <button type="submit" class="boton1"><i class="fa-solid fa-spinner"></i> Generar resumen</button>
    <button onclick="history.back()" class="boton1"><i class="fa-solid fa-arrow-rotate-left"></i> Volver al inicio</button>
