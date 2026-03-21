@@ -284,7 +284,7 @@ document.getElementById("agregar-extra").addEventListener("click", () => {
   div.style.marginBottom = "10px";
 
   div.innerHTML = `
-    <input type="text" class="extra-titulo" placeholder="Título (Ej: Router adicional)" required>
+    <input type="text" class="extra-titulo" placeholder="Título (Ej: RUC)" required>
     <input type="text" class="extra-dato" placeholder="Dato o descripción" required>
 
     <button type="button" class="eliminar-extra boton1">
