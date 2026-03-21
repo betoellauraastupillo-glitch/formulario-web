@@ -54,64 +54,115 @@ document.getElementById("formulario").addEventListener("submit", function (event
   // ------------------------
   const camposEnOrden = [
     "fecha", "acompanante", "cliente",
-    "celular", "correo", "distrito", "direccion", "manzana", "lote",
+    // Documento se insertará aquí
+   "correo", "distrito", "direccion","calle", "manzana", "lote","numeroCasa",
     "pisos", "instaladoEn", "inquilino",
+    // Equipos se insertarán aquí
     "plan", "ip", "torre", "supresor",
     "pago", "tipopago", "contrato", "iptv",
     "sistema", "confirmado","nota"
   ];
+  
+for (let campo of camposEnOrden) {
 
-  for (let campo of camposEnOrden) {
-    if (campo === "cliente") {
-      const input = document.getElementById(campo);
-      const label = document.querySelector(`label[for="${campo}"]`).textContent.replace(":", "").trim();
-      resumen += `● ${label}: ${input.value.trim() || "No especificado"}\n`;
-
-      // Insertar aquí el documento
-      resumen += `● Documento: ${tipoFinal} - ${numeroDocumento}\n`;
-      continue;
-    }
-
-    if (campo === "inquilino") {
-      const seleccionado = document.querySelector('input[name="inquilino"]:checked');
-      const valor = seleccionado ? seleccionado.value : "No especificado";
-      resumen += `● Propietario/Inquilino: ${valor}\n`;
-      continue;
-    }
-
-    if (campo === "plan") {
-      // Insertar aquí los equipos
-      resumen += `● Equipos instalados:\n`;
-      const items = document.querySelectorAll(".equipo-item");
-
-      if (items.length === 0) {
-        resumen += "  No se especificaron equipos\n";
-      } else {
-        let errorEquipos = false;
-        items.forEach((item, i) => {
-          const nombre = item.querySelector(".equipo-nombre").value || `Equipo ${i + 1}`;
-          const estadoInput = item.querySelector("input.equipo-estado:checked");
-
-          if (!estadoInput) {
-            alert(`Debes seleccionar si el equipo "${nombre}" es nuevo o usado.`);
-            errorEquipos = true;
-            return;
-          }
-
-          const estado = estadoInput.value;
-          resumen += `  ○ ${nombre}     ${estado}\n`;
-        });
-        if (errorEquipos) return;
-      }
-    }
+  // ------------------------
+  // CLIENTE + DOCUMENTO + CELULARES
+  // ------------------------
+  if (campo === "cliente") {
 
     const input = document.getElementById(campo);
-    if (!input) continue;
-    const label = document.querySelector(`label[for="${campo}"]`);
-    const nombreCampo = label ? label.textContent.replace(":", "").trim() : campo;
-    const valor = input.value.trim();
-    resumen += `● ${nombreCampo}: ${valor || "No especificado"}\n`;
+    const label = document.querySelector(`label[for="${campo}"]`).textContent.replace(":", "").trim();
+
+    resumen += `● ${label}: ${input.value.trim() || "No especificado"}\n`;
+    resumen += `● Documento: ${tipoFinal} - ${numeroDocumento}\n`;
+
+    // celulares
+    const celulares = document.querySelectorAll(".celular-numero");
+    let lista = [];
+
+    celulares.forEach(c => {
+      if (c.value.trim()) lista.push(c.value.trim());
+    });
+
+    resumen += `● Celular: ${lista.length ? lista.join(" / ") : "No especificado"}\n`;
+
+    continue;
   }
+
+  // ------------------------
+  // INQUILINO
+  // ------------------------
+  if (campo === "inquilino") {
+    const seleccionado = document.querySelector('input[name="inquilino"]:checked');
+    resumen += `● Propietario/Inquilino: ${seleccionado ? seleccionado.value : "No especificado"}\n`;
+    continue;
+  }
+
+  // ------------------------
+  // EQUIPOS
+  // ------------------------
+  if (campo === "plan") {
+    resumen += `● Equipos instalados:\n`;
+
+    const items = document.querySelectorAll(".equipo-item");
+
+    if (items.length === 0) {
+      resumen += "  No se especificaron equipos\n";
+    } else {
+      items.forEach((item, i) => {
+        const nombre = item.querySelector(".equipo-nombre").value || `Equipo ${i + 1}`;
+        const estado = item.querySelector("input.equipo-estado:checked");
+
+        if (estado) {
+          resumen += `  ○ ${nombre}     ${estado.value}\n`;
+        }
+      });
+    }
+  }
+
+  // ------------------------
+  // IPTV + EXTRAS (JUSTO DEBAJO)
+  // ------------------------
+  if (campo === "iptv") {
+
+    const input = document.getElementById(campo);
+    const label = document.querySelector(`label[for="${campo}"]`);
+    const nombre = label ? label.textContent.replace(":", "").trim() : campo;
+
+    resumen += `● ${nombre}: ${input.value.trim() || "No especificado"}\n`;
+
+    // extras
+    const extras = document.querySelectorAll(".extra-item");
+
+    if (extras.length > 0) {
+      resumen += `● Información adicional:\n`;
+
+      extras.forEach(extra => {
+        const titulo = extra.querySelector(".extra-titulo").value.trim();
+        const dato = extra.querySelector(".extra-dato").value.trim();
+
+        if (titulo || dato) {
+          resumen += `  ○ ${titulo || "Dato"}: ${dato || "No especificado"}\n`;
+        }
+      });
+    }
+
+    continue; // 👈 importante
+  }
+
+  // ------------------------
+  // RESTO DE CAMPOS (NORMAL)
+  // ------------------------
+  const input = document.getElementById(campo);
+  if (!input) continue;
+
+  const label = document.querySelector(`label[for="${campo}"]`);
+  const nombre = label ? label.textContent.replace(":", "").trim() : campo;
+
+  resumen += `● ${nombre}: ${input.value.trim() || "No especificado"}\n`;
+}
+
+
 
   // ------------------------
   // Mostrar resumen
@@ -121,9 +172,8 @@ document.getElementById("formulario").addEventListener("submit", function (event
   document.getElementById("resumen-seccion").style.display = "block";
 });
 
-// ------------------------
+
 // Mostrar/ocultar campos según tipo de documento
-// ------------------------
 function actualizarDocumento() {
   const tipo = document.getElementById("tipoDocumento").value;
 
@@ -135,10 +185,12 @@ function actualizarDocumento() {
   documentoAlternativo.style.display = (tipo !== "dni") ? "block" : "none";
   campoOtroTipo.style.display = (tipo === "otro") ? "block" : "none";
 
+  // Reset all required
   document.getElementById("dni").required = false;
   document.getElementById("numeroAlternativo").required = false;
   document.getElementById("otroTipo").required = false;
 
+  // Set required only for visible/selected fields
   if (tipo === "dni") {
     document.getElementById("dni").required = true;
   } else {
@@ -149,9 +201,8 @@ function actualizarDocumento() {
   }
 }
 
-// ------------------------
+
 // Botón copiar resumen
-// ------------------------
 document.getElementById("copiarBtn").addEventListener("click", () => {
   const texto = document.getElementById("resumen-texto").textContent;
   navigator.clipboard.writeText(texto).then(() => {
@@ -159,9 +210,7 @@ document.getElementById("copiarBtn").addEventListener("click", () => {
   });
 });
 
-// ------------------------
 // Botón volver al inicio
-// ------------------------
 document.getElementById("inicioBtn").addEventListener("click", () => {
   location.reload();
 });
@@ -198,8 +247,59 @@ document.getElementById("agregar-equipo").addEventListener("click", () => {
   });
 });
 // ------------------------
-// Inicialización al cargar la página
+// Celulares dinámicos
 // ------------------------
+document.getElementById("agregar-celular").addEventListener("click", () => {
+
+  const contenedor = document.getElementById("celulares-container");
+
+  const div = document.createElement("div");
+  div.className = "celular-item";
+  div.style.marginTop = "10px";
+
+  div.innerHTML = `
+    <input type="tel" class="celular-numero" placeholder="Número de celular">
+
+    <button type="button" class="eliminar-celular boton1">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  `;
+
+  contenedor.appendChild(div);
+
+  div.querySelector(".eliminar-celular").addEventListener("click", () => {
+    div.remove();
+  });
+
+});
+// ------------------------
+// Campos adicionales dinámicos
+// ------------------------
+document.getElementById("agregar-extra").addEventListener("click", () => {
+
+  const contenedor = document.getElementById("extras-container");
+
+  const div = document.createElement("div");
+  div.className = "extra-item";
+  div.style.marginBottom = "10px";
+
+  div.innerHTML = `
+    <input type="text" class="extra-titulo" placeholder="Título (Ej: Router adicional)" required>
+    <input type="text" class="extra-dato" placeholder="Dato o descripción" required>
+
+    <button type="button" class="eliminar-extra boton1">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  `;
+
+  contenedor.appendChild(div);
+
+  div.querySelector(".eliminar-extra").addEventListener("click", () => {
+    div.remove();
+  });
+
+});
+
 window.addEventListener("DOMContentLoaded", function () {
   actualizarDocumento();
 
@@ -217,3 +317,5 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
